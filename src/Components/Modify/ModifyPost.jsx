@@ -26,6 +26,9 @@ function ModifyPost() {
             // Handle error, e.g., show an error message
         }
     };
+    const handleRegresarClick = () => {
+        window.location.href = './header';
+      };    
 
     return (
         <div>

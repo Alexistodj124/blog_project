@@ -39,7 +39,7 @@ function CreatePost() {
         }
     };
     const handleRegresarClick = () => {
-        window.location.href = './';
+        window.location.href = './header';
       };
     return (
         
