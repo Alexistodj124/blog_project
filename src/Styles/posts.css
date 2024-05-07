@@ -1,0 +1,69 @@
+.pressed {
+    background-color: lightgrey;
+}
+
+body {
+
+    background-image: url('https://mmmacademy.es/wp-content/uploads/2023/04/Ingenieria-mecanica.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.posts {
+    background-color: black;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 30px;
+    margin-top: 150px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 24%;
+    width: 50%;
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    border-radius: 30px;
+    z-index: 1;
+    margin-bottom: 100px;
+}
+
+.header h1 {
+    margin: 0 auto;
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #0077A3;
+}
+
+.button-container button.create-post {
+    background-color: #008CBA;
+}
+
+.button-container button.create-post:hover {
+    background-color: #0077A3;
+}
+
+#posts-container {
+    padding: 180px;
+}
