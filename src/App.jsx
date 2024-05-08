@@ -1,21 +1,21 @@
-
-
 import './App.css'
-import Header  from './Components/Header'
-import ModifyPost from './Components/Modify/ModifyPost';
-import CreatePost from './Components/Create/CreatePost';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Login';
+import { lazy } from 'react';
+
+const LazyLogin = lazy(() => import('./Login'));
+const LazyModifyPost = lazy(() => import('./Components/Modify/ModifyPost'));
+const LazyCreatePost = lazy(() => import('./Components/Create/CreatePost'));
+const LazyHeader = lazy(() => import('./Components/Header'));
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/modify-post" element={localStorage.getItem("autenticado")==="true"?<ModifyPost/>:<Login />} />
-        <Route path="/create-post" element={localStorage.getItem("autenticado")==="true"?<CreatePost/>:<Login/>} />
-        <Route path="/header" element={localStorage.getItem("autenticado")==="true"?<Header/>:<Login />} />
+        <Route path="/" element={<LazyLogin />} />
+        <Route path="/modify-post" element={localStorage.getItem("autenticado")==="true"?<LazyModifyPost/>:<LazyLogin />} />
+        <Route path="/create-post" element={localStorage.getItem("autenticado")==="true"?<LazyCreatePost/>:<LazyLogin/>} />
+        <Route path="/header" element={localStorage.getItem("autenticado")==="true"?<LazyHeader/>:<LazyLogin />} />
       </Routes>
     </Router>
   );

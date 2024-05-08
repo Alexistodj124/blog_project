@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAPI from "./useAPI";
+import './Styles/posts.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');

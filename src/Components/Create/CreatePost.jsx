@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useAPI from '../../useAPI';
+import '../../Styles/posts.css';
 
 function CreatePost() {
     const [title, setTitle] = useState('');
@@ -46,13 +47,13 @@ function CreatePost() {
             <button onClick={handleRegresarClick}>Regresar</button>
             <div>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-                <input type="text" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" />
-                <input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} placeholder="Marca" />
-                <input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} placeholder="Modelo" />
-                <input type="text" value={anio} onChange={(e) => setAnio(e.target.value)} placeholder="Año" />
-                <input type="text" value={codigoError} onChange={(e) => setCodigoError(e.target.value)} placeholder="Código de Error" />
-                <input type="text" value={descError} onChange={(e) => setDescError(e.target.value)} placeholder="Descripción de Error" />
-                <button onClick={handleCreatePost}>Create Post</button>
+                <br /><input type="text" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" />
+                <br /><input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} placeholder="Marca" />
+                <br /><input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} placeholder="Modelo" />
+                <br /><input type="text" value={anio} onChange={(e) => setAnio(e.target.value)} placeholder="Año" />
+                <br /><input type="text" value={codigoError} onChange={(e) => setCodigoError(e.target.value)} placeholder="Código de Error" />
+                <br /><input type="text" value={descError} onChange={(e) => setDescError(e.target.value)} placeholder="Descripción de Error" />
+                <br /><button onClick={handleCreatePost}>Create Post</button>
             </div>
             {error && <p>Error: {error}</p>}
         </div>

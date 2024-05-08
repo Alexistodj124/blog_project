@@ -7,7 +7,7 @@ import '../../Styles/posts.css';
 function PostList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { fetchData, deleteData, error } = useAPI();
+  const { fetchData, deleteData } = useAPI();
 
   useEffect(() => {
     async function fetchPosts() {
@@ -21,7 +21,7 @@ function PostList() {
       }
     }
     fetchPosts();
-  }, []);
+  }, [fetchData]);
 
   const handleDelete = async (postId) => {
     const confirmation = window.confirm('Are you sure you want to delete this post?');
