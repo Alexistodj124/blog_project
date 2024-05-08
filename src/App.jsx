@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/modifypost" element={localStorage.getItem("autenticado")==="true"?<ModifyPost/>:<Login />} />
-        <Route path="/createpost" element={localStorage.getItem("autenticado")==="true"?<CreatePost/>:<Login/>} />
+        <Route path="/modify-post" element={localStorage.getItem("autenticado")==="true"?<ModifyPost/>:<Login />} />
+        <Route path="/create-post" element={localStorage.getItem("autenticado")==="true"?<CreatePost/>:<Login/>} />
         <Route path="/header" element={localStorage.getItem("autenticado")==="true"?<Header/>:<Login />} />
       </Routes>
     </Router>

@@ -1,22 +1,18 @@
 import { useState, useEffect } from 'react';
 import Post from './Post';
 import ModifyPost from '../Modify/ModifyPost';
+import useAPI from '../../useAPI';
 import '../../Styles/posts.css';
 
 function PostList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { fetchData, deleteData, error } = useAPI();
 
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch('http://localhost:22562/posts');
-        console.log(response);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch posts');
-        }
-        const data = await response.json();
+        const data = await fetchData('http://localhost:22562/posts');
         setPosts(data);
         setLoading(false);
       } catch (error) {
@@ -31,14 +27,10 @@ function PostList() {
     const confirmation = window.confirm('Are you sure you want to delete this post?');
     if (confirmation) {
       try {
-        const response = await fetch(`http://localhost:22562/posts/${postId}`, {
+        await deleteData(`http://localhost:22562/posts/${postId}`, {
           method: 'DELETE'
         });
-        if (response.ok) {
-          setPosts(posts.filter(post => post.id !== postId));
-        } else {
-          console.error('Failed to delete post');
-        }
+        setPosts(posts.filter(post => post.id !== postId));
       } catch (error) {
         console.error('Error deleting post:', error);
       }
@@ -54,7 +46,7 @@ function PostList() {
         <Post 
           key={post.id} 
           post={post} 
-          onDelete={handleDelete} 
+          onDelete={() => handleDelete(post.id)} 
           onModify={() => <ModifyPost postId={post.id} />}
         />
       ))}

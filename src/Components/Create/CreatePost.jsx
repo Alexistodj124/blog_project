@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Header from '../Header';
+import useAPI from '../../useAPI';
 
 function CreatePost() {
     const [title, setTitle] = useState('');
@@ -9,10 +9,11 @@ function CreatePost() {
     const [anio, setAnio] = useState('');
     const [codigoError, setCodigoError] = useState('');
     const [descError, setDescError] = useState('');
+    const { fetchData, error } = useAPI();
 
     const handleCreatePost = async () => {
         try {
-            const response = await fetch('http://localhost:22562/posts', {
+            const data = await fetchData('http://localhost:22562/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,22 +28,20 @@ function CreatePost() {
                     desc_error: descError
                 })
             });
-            if (!response.ok) {
-                throw new Error('Error creating post');
-            }
-            const newPost = await response.json();
-            console.log('New post:', newPost);
+
+            console.log('New post:', data);
             // Handle success, e.g., show a success message
         } catch (error) {
             console.error('Error creating post:', error.message);
             // Handle error, e.g., show an error message
         }
     };
+
     const handleRegresarClick = () => {
         window.location.href = './header';
-      };
+    };
+
     return (
-        
         <div>
             <button onClick={handleRegresarClick}>Regresar</button>
             <div>
@@ -55,7 +54,7 @@ function CreatePost() {
                 <input type="text" value={descError} onChange={(e) => setDescError(e.target.value)} placeholder="Descripción de Error" />
                 <button onClick={handleCreatePost}>Create Post</button>
             </div>
-            
+            {error && <p>Error: {error}</p>}
         </div>
     );
 }
