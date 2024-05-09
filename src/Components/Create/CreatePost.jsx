@@ -41,23 +41,27 @@ function CreatePost() {
     const handleRegresarClick = () => {
         window.location.href = './header';
     };
-
-    return (
-        <div>
-            <button onClick={handleRegresarClick}>Regresar</button>
+    if (localStorage.getItem("autenticado") === 'true'){
+        return (
             <div>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-                <br /><input type="text" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" />
-                <br /><input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} placeholder="Marca" />
-                <br /><input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} placeholder="Modelo" />
-                <br /><input type="text" value={anio} onChange={(e) => setAnio(e.target.value)} placeholder="Año" />
-                <br /><input type="text" value={codigoError} onChange={(e) => setCodigoError(e.target.value)} placeholder="Código de Error" />
-                <br /><input type="text" value={descError} onChange={(e) => setDescError(e.target.value)} placeholder="Descripción de Error" />
-                <br /><button onClick={handleCreatePost}>Create Post</button>
+                <button onClick={handleRegresarClick}>Regresar</button>
+                <div>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+                    <br /><input type="text" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" />
+                    <br /><input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} placeholder="Marca" />
+                    <br /><input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} placeholder="Modelo" />
+                    <br /><input type="text" value={anio} onChange={(e) => setAnio(e.target.value)} placeholder="Año" />
+                    <br /><input type="text" value={codigoError} onChange={(e) => setCodigoError(e.target.value)} placeholder="Código de Error" />
+                    <br /><input type="text" value={descError} onChange={(e) => setDescError(e.target.value)} placeholder="Descripción de Error" />
+                    <br /><button onClick={handleCreatePost}>Create Post</button>
+                </div>
+                {error && <p>Error: {error}</p>}
             </div>
-            {error && <p>Error: {error}</p>}
-        </div>
-    );
+        );
+    }else{
+        window.location.href = './login';
+    }
+    
 }
 
 export default CreatePost;

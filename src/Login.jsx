@@ -50,23 +50,25 @@ const Login = () => {
             setError(error.message);
         }
     };
-
-    return (
-        <div>
-            <h1>Login</h1>
-            <p>
-                <input type="text" placeholder="Usuario" value={username} onChange={handleUsernameChange} />
-            </p>
-            <p>
-                <input type="password" placeholder="Contraseña" value={contrasenia} onChange={handleContraseniaChange} />
-            </p>
-            <p>
-                <button onClick={autenticarUsuario}>Ingresar</button>
-                <button onClick={registrarUsuario}>Registrar</button>
-            </p>
-            {error && <p>Error: {error}</p>}
-        </div>
-    );
+    if (localStorage.getItem("autenticado") === 'false'){
+        return (
+            <div>
+                <h1>Login</h1>
+                <p>
+                    <input type="text" placeholder="Usuario" value={username} onChange={handleUsernameChange} />
+                </p>
+                <p>
+                    <input type="password" placeholder="Contraseña" value={contrasenia} onChange={handleContraseniaChange} />
+                </p>
+                <p>
+                    <button onClick={autenticarUsuario}>Ingresar</button>
+                    <button onClick={registrarUsuario}>Registrar</button>
+                </p>
+                {error && <p>Error: {error}</p>}
+            </div>
+        );
+    }
+    
 };
 
 export default Login;

@@ -9,6 +9,10 @@ function Header() {
   const handleCreatePostClick = () => {
     window.location.href = './create-post';
   };
+  const logoutClick = () => {
+    localStorage.setItem("autenticado", false);
+    window.location.href = './login';
+  };
   return (
     <div>
       <div className="header">
@@ -16,9 +20,9 @@ function Header() {
         <div className="button-container">
           <button onClick={handleCreatePostClick}>Create Post</button>
           <button onClick={handleModifyPostClick}>Modify Post</button>
+          <button onClick={logoutClick}>Logout</button>
         </div>
       </div>
-      <PostList/>
     </div>
     
     
